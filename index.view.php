@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Form</title>
+    <title>Arrays</title>
 </head>
 <body>
-    <form action="server.php" method="post">
-        Name: <input type="text" name="name"><br>
-        E-mail: <input type="text" name="email"><br>
-        <input type="submit">
-    </form>
+    <?php foreach($listStudents as $key => $value) : ?>
+        <b><?= $key ?></b>: <?= $value['age'] ?> years old<br>
+    <?php endforeach; ?>
 </body>
 </html>
