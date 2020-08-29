@@ -1,9 +1,16 @@
 <?php
 
-$listStudents = array(
-    "thuc" => array("age" => 24),
-    "minh" => array("age" => 23),
-    "tue" => array("age" => 23)
-);
+$tasks = [
+    [
+        'title' => 'Tiếng anh',
+        'due' => 'Hôm nay',
+        'completed' => true,
+    ],
+    [
+        'title' => 'Toán',
+        'due' => 'Cuối tuần',
+        'completed' => false
+    ]
+];
 
 require 'index.view.php';
