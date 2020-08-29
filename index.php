@@ -1,16 +1,7 @@
 <?php
 
-$tasks = [
-    [
-        'title' => 'Tiếng anh',
-        'due' => 'Hôm nay',
-        'completed' => true,
-    ],
-    [
-        'title' => 'Toán',
-        'due' => 'Cuối tuần',
-        'completed' => false
-    ]
-];
+require 'functions.php';
 
-require 'index.view.php';
+$tasks = ["thuc", "minh", "tue"];
+
+dd($tasks);
