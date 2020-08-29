@@ -1,26 +1,37 @@
 <?php
+/**
+ * Define ParentClass
+ * Đây là class cha, class sẽ được các class khác thừa kế
+ */
+class ParentClass
+{
+    // các thuộc tính được khởi tạo tùy theo access modifier
+    public $public = 'Public'; // có thể truy cập ở tất cả mọi nơi
+    protected $protected = 'Protected'; // được truy cập trong subclass
+    private $private = 'Private'; // truy cập trong chính class khai báo nó
 
-class Fruit {
-  public $name; // public properties
-  protected $color;  // protected properties
-  private $weight;  // private properties
-
-  function setName($name) {  // a public function (default)
-    $this->name = $name;
-  }
-  protected function setColor($color) { // a protected function
-    $this->color = $color;
-  }
-  private function setWeight($weight) { // a private function
-    $this->weight = $weight;
-  }
+    function printHello()
+    {
+        echo $this->public;
+        echo $this->protected;
+        echo $this->private;
+        echo "<hr>";
+    }
 }
 
-$banana = new Fruit();
-$banana->name = 'Banana'; // OK
-$banana->color = 'Yellow'; // ERROR
-$banana->weight = '300'; // ERROR
+/**
+ * Define SubClass
+ * Đây là class con, class nhận được các properties và method từ class cha
+ */
+class SubClass extends ParentClass
+{
+    function printHello()
+    {
+        echo $this->public;
+        echo $this->protected;
+        echo $this->private;
+    }
+}
 
-$banana->setName('Banana'); // OK
-$banana->setColor('Yellow'); // ERROR
-$banana->setWeight('300'); // ERROR
+$object = new SubClass();
+$object->printHello(); // Shows Public, Protected, Undefined
