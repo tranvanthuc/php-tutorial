@@ -1,36 +1,26 @@
 <?php
 
-class Car {
-    // properties
-    public $name;
-    public $color;
+class Fruit {
+  public $name; // public properties
+  protected $color;  // protected properties
+  private $weight;  // private properties
 
-    // constructor with params
-    function __construct($name, $color) {
-        $this->name = $name;
-        $this->color = $color;
-    }
-
-    // methods
-    function getName() {
-        return $this->name;
-    }
-
-    function setName($name) {
-        $this->name = $name;
-    }
-
-    function getColor() {
-        return $this->color;
-    }
-
-    function setColor($color) {
-        $this->color = $color;
-    }
+  function setName($name) {  // a public function (default)
+    $this->name = $name;
+  }
+  protected function setColor($color) { // a protected function
+    $this->color = $color;
+  }
+  private function setWeight($weight) { // a private function
+    $this->weight = $weight;
+  }
 }
 
-$audi = new Car("Audi", "Yellow");
-echo $audi->getName(). "<br>";
+$banana = new Fruit();
+$banana->name = 'Banana'; // OK
+$banana->color = 'Yellow'; // ERROR
+$banana->weight = '300'; // ERROR
 
-$toyota = new Car("Toyota", "Red");
-echo $toyota->getName() . "<br>";
+$banana->setName('Banana'); // OK
+$banana->setColor('Yellow'); // ERROR
+$banana->setWeight('300'); // ERROR
