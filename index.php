@@ -1,21 +1,11 @@
 <?php
 
-// thông tin dùng để connect với DB thông qua PDO
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "mydemo";
+require "utils/functions.php";
 
-try {
-    $connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $sql = "select * from todos";
-    $statement = $connection->prepare($sql);
-    $statement->execute();
+require "core/bootstrap.php";
 
-    // dùng hàm dd được viết trong functions.php đã được tạo ở các bài trước
-    $todos = $statement->fetchAll(PDO::FETCH_OBJ);
-} catch (PDOException $e) {
-    echo $sql . "<br>" . $e->getMessage();
-}
+$query = $app['database'];
 
-require "index.view.php";
+$router = Router::load("routes.php");
+
+require $router->direct(Request::uri());
