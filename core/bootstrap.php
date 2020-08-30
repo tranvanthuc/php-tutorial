@@ -1,5 +1,7 @@
 <?php
 
+use App\Core\App;
+
 // khởi tạo instance config và đưa vào registry
 App::bind('config', require 'config.php');
 

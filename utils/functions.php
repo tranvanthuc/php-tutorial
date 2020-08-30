@@ -11,7 +11,7 @@ function dd($data)
 function view($name, $data = [])
 {
     extract($data);
-    require "views/{$name}.view.php";
+    require "app/views/{$name}.view.php";
 }
 
 function redirect($path)

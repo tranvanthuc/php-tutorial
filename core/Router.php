@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Core;
+
+use Exception;
+
 class Router
 {
     protected $routes = [
@@ -51,6 +55,8 @@ class Router
 
     private function callAction($controller, $action)
     {
+        $controller = "App\\Controllers\\{$controller}";
+
         if (!method_exists($controller, $action)) {
             throw new Exception(
                 "{$controller} does not have the {$action} action."

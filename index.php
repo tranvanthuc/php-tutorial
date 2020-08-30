@@ -6,5 +6,7 @@ require "utils/functions.php";
 
 require "core/bootstrap.php";
 
-Router::load("routes.php")
+use App\Core\{Request, Router};
+
+Router::load("app/routes.php")
     ->direct(Request::uri(), Request::method());
