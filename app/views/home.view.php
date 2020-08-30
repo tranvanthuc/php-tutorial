@@ -3,7 +3,10 @@
 <h3>Todos</h3>
 <ul>
     <?php foreach ($todos as $todo) : ?>
-        <li><?= $todo->name ?></li>
+        <li>
+            <?= $todo->name ?>
+            <a href="/delete-todo?id=<?= $todo->id ?>">X</a>
+        </li>
     <?php endforeach; ?>
 </ul>
 

@@ -22,4 +22,9 @@ abstract class BaseModel
     {
         static::getDB()->insert(static::getTable(), $params);
     }
+
+    public static function delete($id)
+    {
+        static::getDB()->delete(static::getTable(), $id);
+    }
 }

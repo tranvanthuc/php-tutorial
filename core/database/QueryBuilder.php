@@ -38,4 +38,20 @@ class QueryBuilder
             die("Something is wrong!");
         }
     }
+
+    // delete record with id
+    public function delete($table, $id)
+    {
+        $sql = sprintf(
+            "delete from %s where id = %s",
+            $table,
+            $id
+        );
+        try {
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute();
+        } catch (Exception $e) {
+            die("Something is wrong!");
+        }
+    }
 }

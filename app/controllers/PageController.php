@@ -18,7 +18,7 @@ class PageController
     {
         // biến $title truyền vào view để hiển thị title
         $title = "Todos List";
-        $todos = $this->query->selectAll("todos");
+        $todos = Todo::all();
 
         view("home", compact('title', 'todos'));
     }
@@ -39,9 +39,19 @@ class PageController
     {
         // $query được khởi tạo trong file index.php
         // dùng để connect db và truy xuất db
-        $this->query->insert('todos', [
+        $data = [
             'name' => $_POST['name']
-        ]);
+        ];
+        Todo::insert($data);
+
+        // redirect to Home page
+        redirect("/");
+    }
+
+    public function deleteTodo()
+    {
+        // gọi hàm delete của model
+        Todo::delete($_GET['id']);
 
         // redirect to Home page
         redirect("/");
