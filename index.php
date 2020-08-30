@@ -1,28 +1,34 @@
 <?php
 
-abstract class ParentClass {
-	// abstract method không có body
-    abstract function showMessage();
+// interface Sinh vật
+interface Creature
+{
+    // hàm dùng để lấy tên sinh vật
+    public function getName();
+}
 
-	// method bình thường có body (non-abstract method)
-    function sayHello() {
-	// body
-        echo "Hello<br>";
+// interface Động vật
+interface Animal extends Creature
+{
+    // hàm dùng để lấy màu của động vật
+    public function getColor();
+}
+
+// class Con bò
+class Cow implements Animal, Creature
+{
+    public function getName()
+    {
+        return "Con Bò";
+    }
+
+    public function getColor()
+    {
+        return "nâu";
     }
 }
 
-class ChildClass extends ParentClass {
-    // implement method showMessage
-    function showMessage() {
-        echo "Class Child<br>";
-    }
+$conbo = new Cow;
+echo "<br>Tên: " . $conbo->getName();
+echo "<br>Màu: " . $conbo->getColor();
 
-    // override method sayHello của ParentClass
-    function sayHello() {
-        echo "Hi<br>";
-    }
-}
-
-$child = new ChildClass();
-$child->showMessage();
-$child->sayHello();
