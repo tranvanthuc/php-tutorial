@@ -7,3 +7,14 @@ function dd($data)
     echo '</pre>';
     die();
 }
+
+function view($name, $data = [])
+{
+    extract($data);
+    require "views/{$name}.view.php";
+}
+
+function redirect($path)
+{
+    header("Location: {$path}");
+}

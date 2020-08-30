@@ -27,13 +27,15 @@ class Router
         // kiểm tra URI và method của nó có trong danh sách định tuyến ko
         if (array_key_exists($uri, $this->routes[$method])) {
             // nếu có thì controller tương ứng với URI đó sẽ được thực thi
-            return $this->routes[$method][$uri];
+            // PageController@home
+            return $this->callAction(
+                ...explode('@', $this->routes[$method][$uri])
+            );
         }
 
         // nếu không trả về lỗi
         throw new Exception("No route defined!");
     }
-
 
     // routes with GET method
     public function get($uri, $controller)
@@ -45,5 +47,16 @@ class Router
     public function post($uri, $controller)
     {
         $this->routes['POST'][$uri] = $controller;
+    }
+
+    private function callAction($controller, $action)
+    {
+        if (!method_exists($controller, $action)) {
+            throw new Exception(
+                "{$controller} does not have the {$action} action."
+            );
+        }
+
+        return (new $controller)->$action();
     }
 }
