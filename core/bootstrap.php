@@ -1,10 +1,9 @@
 <?php
 
-$app = [];
-
-$app['config'] = require 'config.php';
+// khởi tạo instance config và đưa vào registry
+App::bind('config', require 'config.php');
 
 // khởi tạo querybuilder để truy xuất DB
-$app['database'] = new QueryBuilder(
-    Connection::make($app['config']['database'])
-);
+App::bind('database',  new QueryBuilder(
+    Connection::make(App::get('config')['database'])
+));
