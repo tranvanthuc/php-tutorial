@@ -1,34 +1,21 @@
 <?php
 
-// interface Sinh vật
-interface Creature
-{
-    // hàm dùng để lấy tên sinh vật
-    public function getName();
+// thông tin dùng để connect với DB thông qua PDO
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mydemo";
+
+try {
+    $connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $sql = "select * from todos";
+    $statement = $connection->prepare($sql);
+    $statement->execute();
+
+    // dùng hàm dd được viết trong functions.php đã được tạo ở các bài trước
+    $todos = $statement->fetchAll(PDO::FETCH_OBJ);
+} catch (PDOException $e) {
+    echo $sql . "<br>" . $e->getMessage();
 }
 
-// interface Động vật
-interface Animal extends Creature
-{
-    // hàm dùng để lấy màu của động vật
-    public function getColor();
-}
-
-// class Con bò
-class Cow implements Animal, Creature
-{
-    public function getName()
-    {
-        return "Con Bò";
-    }
-
-    public function getColor()
-    {
-        return "nâu";
-    }
-}
-
-$conbo = new Cow;
-echo "<br>Tên: " . $conbo->getName();
-echo "<br>Màu: " . $conbo->getColor();
-
+require "index.view.php";
