@@ -1,37 +1,28 @@
 <?php
-/**
- * Define ParentClass
- * Đây là class cha, class sẽ được các class khác thừa kế
- */
-class ParentClass
-{
-    // các thuộc tính được khởi tạo tùy theo access modifier
-    public $public = 'Public'; // có thể truy cập ở tất cả mọi nơi
-    protected $protected = 'Protected'; // được truy cập trong subclass
-    private $private = 'Private'; // truy cập trong chính class khai báo nó
 
-    function printHello()
-    {
-        echo $this->public;
-        echo $this->protected;
-        echo $this->private;
-        echo "<hr>";
+abstract class ParentClass {
+	// abstract method không có body
+    abstract function showMessage();
+
+	// method bình thường có body (non-abstract method)
+    function sayHello() {
+	// body
+        echo "Hello<br>";
     }
 }
 
-/**
- * Define SubClass
- * Đây là class con, class nhận được các properties và method từ class cha
- */
-class SubClass extends ParentClass
-{
-    function printHello()
-    {
-        echo $this->public;
-        echo $this->protected;
-        echo $this->private;
+class ChildClass extends ParentClass {
+    // implement method showMessage
+    function showMessage() {
+        echo "Class Child<br>";
+    }
+
+    // override method sayHello của ParentClass
+    function sayHello() {
+        echo "Hi<br>";
     }
 }
 
-$object = new SubClass();
-$object->printHello(); // Shows Public, Protected, Undefined
+$child = new ChildClass();
+$child->showMessage();
+$child->sayHello();
