@@ -15,15 +15,7 @@ function countNumberOfString($string)
         value là giá trị của phần tử
     */
     foreach ($array as $index => $value) { 
-        if ($index == $length - 1) { // kiểm tra phần tử hiện tại có phải là phần tử cuối cùng của mảng
-            echo $value; // đúng thì chỉ in ra giá trị của nó 
-        } else {
-            echo "$value, "; // sai thì in ra giá trị kèm theo dấu phẩy ở sau
-        }
-
-        /* nếu không có đoạn code này sẽ dư một dấu phẩy sau cùng
-        VD: "Toi la thuc" -> Toi, la, Thuc,
-        */
+        echo "$value<br>";
     }
     return $length;
 }

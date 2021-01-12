@@ -9,14 +9,8 @@ function printSortArray($array)
     và chúng ta sẽ dùng viến này để for
     */
     sort($array);
-    $length = count($array);
     foreach($array as $index => $value) {
-        // tương tự ở vd bài trước, sẽ in ra không có dấu , nếu là phần tử cuối cùng của array
-        if ($index == $length - 1) { 
-            echo $value;
-        } else {
-            echo "$value, ";
-        }
+        echo "$value ";
     }
 }
 
