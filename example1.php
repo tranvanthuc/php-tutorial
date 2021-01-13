@@ -1,42 +1,17 @@
 <?php
 
-// Số nguyên tố là số chia hết cho 1 và chính nó
-// hàm kiểm tra số nguyên tố và lưu ý n là số nguyên dương > 0
-function checkPrimeNumber($n)
-{
-    // kiểm tra $n nếu nhỏ hơn 2 thì nó là số nguyên tố (nghĩa là nếu n = 1 -> n là số nguyên tố)
-    if ($n < 2) {
-        return true;
-    }
+require "./functions.php";
 
-    /* 
-    nếu n > 2 thì ta tiếp tục với vòng lặp for để kiểm tra n có chia hết cho bất kỳ số nào từ 2 -> số nhỏ hơn 1 nữa của nó
-    VD n = 9 -> n/2 = 4; ta chỉ cần kiểm nha n không chia kết cho 2, 3, 4 -> n là số nguyên tố
-    ở đây n chia hết cho 3 -> n = 9 không phải là số nguyên tố
-    */ 
-    // kiểm tra n có chia hết cho các số nhỏ hơn một nữa của nó
-    for($i = 2; $i <= $n/2; $i++) {
-        if ($n % $i == 0)
-            return false;  
-    }
+// xem function checkItemInArray ở file functions.php
 
-    /* nếu vòng lặp for không return về false nghĩa là n không chia hết cho bất kỳ số nào nhỏ hơn một nửa của nó 
-    nghĩa là n là số nguyên tố -> chúng ta return true
-    */
-    return true;
-}
+// execute function
+$array = [4,1,3,5,7];
+printArray($array);
+$item = 10;
+$index = checkItemInArray($array, $item);
 
-// sử dụng function
-$n = 11; 
-$boolCheck = checkPrimeNumber($n);
-if ($boolCheck) {
-    echo "$n là số nguyên tố";
+if ($index != -1) {
+    echo "$item ton tai trong mang voi index = $index";
 } else {
-    echo "$n không phải là số nguyên tố";
+    echo "Khong ton tai $item trong mang";
 }
-
-/* bài tập mở rộng
-Viết function in ra màn hình các số nguyên tố nhỏ hơn n 
-VD: n = 20 thì các số nguyên tố nhỏ hơn là 1, 2, 3, 5, 7, 11, 13, 17, 19
-Gợi ý sử dụng vòng lặp for và sử dụng hàm check ở trên để in các số nguyên tố thỏa mãn ra màn hình
-*/

@@ -1,26 +1,28 @@
 <?php
 
-// hàm đếm số từ trong một chuỗi string
-function countNumberOfString($string)
-{
-    echo "Các từ của string <b>'$string'</b> là: <br>";
-    /* hàm explode sẽ trả về một array sau khi cắt chuỗi string dựa theo param đầu tiên được truyền vào " "
-    trong vd của chúng ta là dấu cách 
-    */
-    $array = explode(" ", $string);
-    
-    // hàm count đếm số phần tử của array
-    $length = count($array); 
-    /*  index thứ tự của phần tử sẽ có giá trị bắt đầu từ 0
-        value là giá trị của phần tử
-    */
-    foreach ($array as $index => $value) { 
-        echo "$value<br>";
-    }
-    return $length;
+require "./functions.php";
+
+// sử dụng hai hàm checkItemInArray và removeItemInArrayByIndex ở file functions.php
+
+function checkAndDeleteItemInArray($array, $item) {
+
+    // sử dụng 2 hàm đã làm ở các bài trước
+    // đó là lý do tại sao bỏ 2 hàm này ở trong file functions để chúng require vào tránh trùng lặp code
+
+    // tìm vị trí của item trong array
+    $index = checkItemInArray($array, $item);
+
+    // xóa phần tử ở vị trí index vừa được tìm được ở trên
+    $newArray = removeItemInArrayByIndex($array, $index);
+
+    return $newArray;
 }
 
-// sử dụng function
-$str = "Chào mừng mọi người đã đến với khóa học PHP Core";
-$length = countNumberOfString($str);
-echo "<br>Có $length từ trong string trên";
+// execute function
+$array = [4,1,2,3,5,7];
+$item = 4;
+printArray($array);
+
+$newArray = checkAndDeleteItemInArray($array, $item);
+echo "Delete Item = $item <br>";
+printArray(($newArray));

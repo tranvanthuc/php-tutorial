@@ -1,15 +1,15 @@
 <?php
 
-// hàm tính tổng các số từ n -> 1 lưu ý số n >= 1
-function sum($n) {
-    $sum = 0;
-    // duyệt từ 1 -> n và dùng biến $sum để cộng các giá trị của $i
-    for($i=1; $i<=$n; $i++) {
-        $sum = $sum + $i;
-    }
-    return $sum;
-}
+require "./functions.php";
 
-// sử dụng function
-$n = 10;
-echo "<br>Tổng các số từ $n -> 1 là: " . sum($n);
+// xem function addItemIntoArraybyIndex ở file functions.php
+
+// execute function
+$array = [4,1,2,3,5,7];
+$item = 6;
+$index = 3;
+printArray($array);
+
+$newArray = addItemIntoArraybyIndex($array, $item, $index);
+echo "Item = $item, index = $index <br>";
+printArray(($newArray));

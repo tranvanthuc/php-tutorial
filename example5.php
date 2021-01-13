@@ -1,30 +1,30 @@
 <?php
 
-// hàm tính tổng các con số của một số truyền vào
-function sumNumber($n)
-{
-    $sum = 0;
-    while ($n > 0) {
-        /*
-        $sum = $sum + $n%10;
-        trong đó $n%10 là kết quả chia dư
-        VD: 14 -> 14%10 = 4
-        sau khi chia dư xong thì ta chia n cho 10 
-        */
-        $sum += $n % 10;
-        $n /= 10;
+require "./functions.php";
+
+// hàm tìm giá trị nhỏ nhất trong mảng
+function findMinInArray($array) {
+    $index = -1;
+    // gán giá trị min là phần tử đầu tiên của mảng
+    $min = $array[0];
+
+    // duyệt các phần tử mảng và so sánh với giá trị min
+    foreach($array as $key => $item) {
+        // nếu min lớn phần tử item thì nghĩa là item nhỏ hơn min, 
+        // nên cần gán lại min có giá trị mới là phần tử item hiện tại đang duyệt
+        if ($min > $item) {
+            $min = $item;
+            $index = $key;
+        }
     }
-    return $sum;
+
+    return [$min, $index];
 }
 
-// sử dụng function
-$number = 123; 
-// Tổng các con số sẽ là 1 + 2 + 3 = 6
-echo "Tổng các chữ số của $number là " . sumNumber($number);
-
-/**
- * vòng lặp 1: n = 123 > 0 -> $sum = $sum + n%10 = 0 + 3 = 3; sau đó $n = $n/10 = 12;
- * vòng lặp 2: n = 12 > 0 -> $sum = $sum + n%10 = 3 + 2 = 5; sau đó $n = $n/10 = 1;
- * vòng lặp 3: n = 1 > 0 -> $sum = $sum + n%10 = 1 + 5 = 6; sau đó $n = $n/10 = 0;
- * vòng lặp 4: n = 0 > 0 sai -> dừng vòng lặp return $sum là 6;
- */
+// execute function
+$array = [4,6,8,10,2,3,5,7];
+printArray($array);
+list($min, $index) = findMinInArray($array);
+if ($index > 0) {
+    echo "Min = $min, index = $index";
+}
