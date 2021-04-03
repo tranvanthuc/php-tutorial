@@ -1,6 +1,6 @@
 <?php
 
-abstract class Shape 
+abstract class Shape
 {
     use PrintShape;
 
@@ -29,7 +29,7 @@ class Circle extends Shape
 
     function getArea()
     {
-        return self::PI * pow($this->radius, 2) ;
+        return self::PI * pow($this->radius, 2);
     }
 
     function getPerimeter()
@@ -95,7 +95,8 @@ class Square extends Rectangle
 
 trait PrintShape
 {
-    function printShapeInfo() {
+    function printShapeInfo()
+    {
         echo "<br>---------------------------------------";
         $this->print();
     }
@@ -104,7 +105,7 @@ trait PrintShape
     {
         echo "<br>Area: " . $this->getArea();
     }
-    
+
     function printPerimeter()
     {
         echo "<br>Perimeter: " . $this->getPerimeter();

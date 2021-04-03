@@ -1,6 +1,6 @@
 <?php
 
-interface Shape 
+interface Shape
 {
     function print();
 
@@ -27,7 +27,7 @@ class Circle implements Shape
 
     function getArea()
     {
-        return self::PI * pow($this->radius, 2) ;
+        return self::PI * pow($this->radius, 2);
     }
 
     function getPerimeter()
@@ -57,7 +57,7 @@ class Rectangle implements Shape
         $this->length = $l;
         $this->width = $w;
     }
-    
+
     function print()
     {
         echo "<br>Rectangle: length = $this->length, width = $this->width";
@@ -101,12 +101,13 @@ class PrintShape
 {
     private $shape;
 
-    function setShape($shape)
+    function setShape(Shape $shape)
     {
         $this->shape = $shape;
     }
 
-    function printShapeInfo() {
+    function printShapeInfo()
+    {
         echo "<br>---------------------------------------";
         $this->shape->print();
     }
@@ -115,7 +116,7 @@ class PrintShape
     {
         echo "<br>Area: " . $this->shape->getArea();
     }
-    
+
     function printPerimeter()
     {
         echo "<br>Perimeter: " . $this->shape->getPerimeter();
@@ -148,4 +149,3 @@ $print->setShape($square);
 $print->printShapeInfo();
 $print->printArea();
 $print->printPerimeter();
-
